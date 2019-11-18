@@ -80,7 +80,7 @@ return [
     */
 
     'model_locations' => array(
-        'app',
+        'app/Models',
     ),
 
 
