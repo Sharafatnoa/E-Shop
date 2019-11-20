@@ -1,12 +1,21 @@
 <?php
 
 namespace App\Models;
-
+use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
 
 class Category extends Model
 {
     protected $guarded = [];
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($category){
+            $category->slug =str::slug($category->name);
+        });
+    }
 
     public function parent_category(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
